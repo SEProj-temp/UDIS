@@ -11,6 +11,8 @@ Testing the Login Page
 	PASS
 Test cases passed : 5/5
 
+--------------- Passed checks
+
 Testing the StudentsView Page
 	a. Correct detailes like CGPA, year of joining etc displayed:
 	PASS
@@ -21,6 +23,8 @@ Testing the StudentsView Page
 	d. Cleared backlog subjects shown with an asterisk
 	PASS
 Test cases passed : 4/4
+
+---------------------- Not checked
 
 Testing the StudentsCourses Page
 	a. Only non-cleared courses should be displayed
@@ -42,6 +46,8 @@ Testing the StudentsCourses Page
 	PASS
 	PASS
 	Test cases passed : 10/10
+	
+------------------------ Not checked
 
 Testing the StudentGrades Page
 	a. Visibility of only ongoing courses for Grading
@@ -51,6 +57,8 @@ Testing the StudentGrades Page
 	c. Grades and CGPA entered and visible in performance section of student view page.
 	PASS
 Test cases passed : 3/3
+
+---------------------- Not checked
 
 Testing the StudentNew Page
 
@@ -68,6 +76,8 @@ e. Course Identifier Testing
 f. Student added successfully and can be accessed from database testing
 	PASS
 Test cases passed : 7/7
+
+---------------------- b and e not checked, otherwise done.
 
 Testing the Inventory Page
 	a. Blank name and type all:
@@ -94,6 +104,8 @@ Testing the Inventory Page
 	PASS
 Test cases passed : 12/12
 
+------------------------------a, b, c, d, e, g not checked.
+
 Testing the Account Page
 
 	a. Donation amount is not a number or is not positive
@@ -110,6 +122,8 @@ Testing the Account Page
 	f. All Cash book account details veiwed in correct format
 	PASS
 	Test cases passed : 7/7
+	
+-------------------------------Not checked
 
 Testing the DepartmentCourses Page
 
@@ -140,6 +154,8 @@ e. Course added successfully and is visible for searching
 	PASS
 
 Test cases passed : 16/16
+
+--------------------------------Not checked
 
 Testing the DepartmentPublication Page
 
@@ -174,6 +190,8 @@ g. Status cannot be changed if current status is 'Completed'
 	PASS
 Test cases passed : 11/11
 
+------------------------------b, c not checked
+
 Testing the StudentSearch Page
 	a. Searching the student with roll no. or name left empty or both filled
 	PASS
@@ -186,4 +204,4 @@ Testing the StudentSearch Page
 	PASS
 Test cases passes : 6/6
 
-	
+----------------------------------Not checked 	
