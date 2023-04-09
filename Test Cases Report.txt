@@ -75,9 +75,9 @@ e. Course Identifier Testing
 	PASS
 f. Student added successfully and can be accessed from database testing
 	PASS
-Test cases passed : 7/7
+Test cases passed : 7/7 (6/6 bruv)
 
----------------------- b and e not checked, otherwise done.
+-----------------------e not checked, otherwise done.
 
 Testing the Inventory Page
 	a. Blank name and type all:
@@ -104,7 +104,7 @@ Testing the Inventory Page
 	PASS
 Test cases passed : 12/12
 
-------------------------------a, b, c, d, e, g not checked.
+------------------------------a, b, c, d, e, g2 not checked.
 
 Testing the Account Page
 
