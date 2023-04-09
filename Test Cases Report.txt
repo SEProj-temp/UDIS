@@ -168,6 +168,8 @@ c. Publication added successfully
 	PASS
 Test cases passed : 4/4
 
+--------------------------Passed checks
+
 Testing the DepartmentProject Page
 
 a. One or more fields left blank
