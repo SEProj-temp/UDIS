@@ -71,7 +71,7 @@ f. Student added successfully and can be accessed from database testing
 	PASS
 Test cases passed : 7/7 (6/6 bruv)
 
------------------------e not checked, otherwise done.
+-----------------------Passed checks.
 
 Testing the Inventory Page
 	a. Blank name and type all:
