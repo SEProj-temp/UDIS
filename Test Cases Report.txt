@@ -104,7 +104,7 @@ Testing the Inventory Page
 	PASS
 Test cases passed : 12/12
 
-------------------------------a, b, c, d, e, g2 not checked.
+------------------------------e, g2 not checked.
 
 Testing the Account Page
 
