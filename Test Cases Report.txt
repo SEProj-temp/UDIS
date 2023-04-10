@@ -13,6 +13,96 @@ Test cases passed : 5/5
 
 --------------- Passed checks
 
+
+Testing the DepartmentPublication Page
+
+a. Some fields are left empty
+	PASS
+	PASS
+b. Publication already exists
+	PASS
+c. Publication added successfully
+	PASS
+Test cases passed : 4/4
+
+--------------------------Passed checks
+
+
+
+Testing the DepartmentProject Page
+
+a. One or more fields left blank
+	PASS
+	PASS
+	PASS
+	PASS
+b. Invalid funds value
+	PASS
+	PASS
+c. Sufficient Balance not present in the Department Account
+	PASS
+d. Project Name already Exists
+	PASS
+e. Project added successfully
+	PASS
+f. Status of Ongoing projects can be changed
+	PASS
+g. Status cannot be changed if current status is 'Completed'
+	PASS
+Test cases passed : 11/11
+
+------------------------------b, c not checked
+
+
+Testing the StudentNew Page
+
+a. Roll number format checking
+	PASS
+	PASS
+b. Year of admission checking
+	PASS
+c. Duplicate Roll No checking
+	PASS
+d. Blank field testing
+	PASS
+e. Course Identifier Testing
+	PASS
+f. Student added successfully and can be accessed from database testing
+	PASS
+Test cases passed : 7/7 (6/6 bruv)
+
+-----------------------e not checked, otherwise done.
+
+Testing the Inventory Page
+	a. Blank name and type all:
+	PASS
+	b. Specific name and type all:
+	PASS
+	c. No name and type specific:
+	PASS
+	d. Name specific and type specific:
+	PASS
+	e. Insufficient funds in account while adding item
+	PASS
+	f. Quantity of item not positive or not a valid number
+	PASS
+	g. Price of item not positive or not a valid number
+	PASS
+	h. One or more fields left blank
+ 	PASS
+	PASS
+	PASS
+	g. If all details(location,name and type) match an item from inventory, increase its quantity
+	PASS
+	i. Add item if any of the location,name or type don't match.
+	PASS
+Test cases passed : 12/12
+
+------------------------------e, g2 not checked.
+
+
+
+
 Testing the StudentsView Page
 	a. Correct detailes like CGPA, year of joining etc displayed:
 	PASS
@@ -60,51 +150,8 @@ Test cases passed : 3/3
 
 ---------------------- Not checked
 
-Testing the StudentNew Page
 
-a. Roll number format checking
-	PASS
-	PASS
-b. Year of admission checking
-	PASS
-c. Duplicate Roll No checking
-	PASS
-d. Blank field testing
-	PASS
-e. Course Identifier Testing
-	PASS
-f. Student added successfully and can be accessed from database testing
-	PASS
-Test cases passed : 7/7 (6/6 bruv)
 
------------------------e not checked, otherwise done.
-
-Testing the Inventory Page
-	a. Blank name and type all:
-	PASS
-	b. Specific name and type all:
-	PASS
-	c. No name and type specific:
-	PASS
-	d. Name specific and type specific:
-	PASS
-	e. Insufficient funds in account while adding item
-	PASS
-	f. Quantity of item not positive or not a valid number
-	PASS
-	g. Price of item not positive or not a valid number
-	PASS
-	h. One or more fields left blank
- 	PASS
-	PASS
-	PASS
-	g. If all details(location,name and type) match an item from inventory, increase its quantity
-	PASS
-	i. Add item if any of the location,name or type don't match.
-	PASS
-Test cases passed : 12/12
-
-------------------------------e, g2 not checked.
 
 Testing the Account Page
 
@@ -157,42 +204,7 @@ Test cases passed : 16/16
 
 --------------------------------Not checked
 
-Testing the DepartmentPublication Page
 
-a. Some fields are left empty
-	PASS
-	PASS
-b. Publication already exists
-	PASS
-c. Publication added successfully
-	PASS
-Test cases passed : 4/4
-
---------------------------Passed checks
-
-Testing the DepartmentProject Page
-
-a. One or more fields left blank
-	PASS
-	PASS
-	PASS
-	PASS
-b. Invalid funds value
-	PASS
-	PASS
-c. Sufficient Balance not present in the Department Account
-	PASS
-d. Project Name already Exists
-	PASS
-e. Project added successfully
-	PASS
-f. Status of Ongoing projects can be changed
-	PASS
-g. Status cannot be changed if current status is 'Completed'
-	PASS
-Test cases passed : 11/11
-
-------------------------------b, c not checked
 
 Testing the StudentSearch Page
 	a. Searching the student with roll no. or name left empty or both filled
