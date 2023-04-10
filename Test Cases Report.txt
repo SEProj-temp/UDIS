@@ -48,6 +48,20 @@ Test cases passed : 7/7 (6/6 bruv)
 
 
 
+Testing the StudentSearch Page
+	a. Searching the student with roll no. or name left empty or both filled
+	PASS
+	PASS
+	PASS
+	PASS
+	b. Correct popup opened on clicking a student with title matching roll number
+	PASS
+	c. ALl details visible in the popup in correct format
+	PASS
+Test cases passes : 6/6
+
+----------------------------------Passed Checks 
+
 
 Testing the DepartmentProject Page
 
@@ -207,18 +221,4 @@ Test cases passed : 16/16
 
 --------------------------------Not checked
 
-
-
-Testing the StudentSearch Page
-	a. Searching the student with roll no. or name left empty or both filled
-	PASS
-	PASS
-	PASS
-	PASS
-	b. Correct popup opened on clicking a student with title matching roll number
-	PASS
-	c. ALl details visible in the popup in correct format
-	PASS
-Test cases passes : 6/6
-
-----------------------------------Not checked 	
+	
