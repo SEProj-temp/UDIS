@@ -109,7 +109,7 @@ g. Status cannot be changed if current status is 'Completed'
 	PASS
 Test cases passed : 11/11
 
-------------------------------b, c not checked
+------------------------------Passed checks
 
 
 
@@ -139,7 +139,9 @@ Testing the Inventory Page
 	PASS
 Test cases passed : 12/12
 
-------------------------------e, g2 not checked.
+------------------------------Passed checks
+
+
 
 
 
