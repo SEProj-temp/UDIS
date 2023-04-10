@@ -27,6 +27,26 @@ Test cases passed : 4/4
 
 --------------------------Passed checks
 
+Testing the StudentNew Page
+
+a. Roll number format checking
+	PASS
+	PASS
+b. Year of admission checking
+	PASS
+c. Duplicate Roll No checking
+	PASS
+d. Blank field testing
+	PASS
+e. Course Identifier Testing
+	PASS
+f. Student added successfully and can be accessed from database testing
+	PASS
+Test cases passed : 7/7 (6/6 bruv)
+
+-----------------------Passed checks.
+
+
 
 
 Testing the DepartmentProject Page
@@ -54,24 +74,7 @@ Test cases passed : 11/11
 ------------------------------b, c not checked
 
 
-Testing the StudentNew Page
 
-a. Roll number format checking
-	PASS
-	PASS
-b. Year of admission checking
-	PASS
-c. Duplicate Roll No checking
-	PASS
-d. Blank field testing
-	PASS
-e. Course Identifier Testing
-	PASS
-f. Student added successfully and can be accessed from database testing
-	PASS
-Test cases passed : 7/7 (6/6 bruv)
-
------------------------Passed checks.
 
 Testing the Inventory Page
 	a. Blank name and type all:
