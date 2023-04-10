@@ -143,6 +143,37 @@ Test cases passed : 12/12
 
 
 
+Testing the DepartmentCourses Page
+
+a. Searching Courses with empty keyword
+	PASS
+b. Searching Courses with Keyword "Lab"
+	PASS
+c. Searching Courses with Keyword "Software"
+	PASS
+d. Searching Courses with code "CS29202"
+	PASS
+e. Course Code already present
+	PASS
+f. Credits entered is not a number
+	PASS
+g. Credits is not in the appropriate range of {2, 3, 4, 5}
+	PASS
+	PASS
+h. One or more fields left blank
+	PASS
+	PASS
+	PASS
+	PASS
+e. Course added successfully and is visible for searching
+	PASS
+	PASS
+	PASS
+	PASS
+
+Test cases passed : 16/16
+
+--------------------------------Searching not checked, otherwise passed
 
 
 
@@ -195,36 +226,5 @@ Test cases passed : 3/3
 
 
 
-Testing the DepartmentCourses Page
-
-a. Searching Courses with empty keyword
-	PASS
-b. Searching Courses with Keyword "Lab"
-	PASS
-c. Searching Courses with Keyword "Software"
-	PASS
-d. Searching Courses with code "CS29202"
-	PASS
-e. Course Code already present
-	PASS
-f. Credits entered is not a number
-	PASS
-g. Credits is not in the appropriate range of {2, 3, 4, 5}
-	PASS
-	PASS
-h. One or more fields left blank
-	PASS
-	PASS
-	PASS
-	PASS
-e. Course added successfully and is visible for searching
-	PASS
-	PASS
-	PASS
-	PASS
-
-Test cases passed : 16/16
-
---------------------------------Not checked
 
 	
