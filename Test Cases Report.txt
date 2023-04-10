@@ -48,6 +48,28 @@ Test cases passed : 7/7 (6/6 bruv)
 
 
 
+
+Testing the Account Page
+
+	a. Donation amount is not a number or is not positive
+	PASS
+	PASS
+	b. Unnamed Donation
+	PASS
+	c. Purpose is not mentioned
+	PASS
+	d. Date format is wrong
+	PASS
+	e. Date is Invalid
+	PASS
+	f. All Cash book account details veiwed in correct format
+	PASS
+	Test cases passed : 7/7
+	
+-------------------------------Passed Checks
+
+
+
 Testing the StudentSearch Page
 	a. Searching the student with roll no. or name left empty or both filled
 	PASS
@@ -61,6 +83,8 @@ Testing the StudentSearch Page
 Test cases passes : 6/6
 
 ----------------------------------Passed Checks 
+
+
 
 
 Testing the DepartmentProject Page
@@ -168,26 +192,6 @@ Test cases passed : 3/3
 ---------------------- Not checked
 
 
-
-
-Testing the Account Page
-
-	a. Donation amount is not a number or is not positive
-	PASS
-	PASS
-	b. Unnamed Donation
-	PASS
-	c. Purpose is not mentioned
-	PASS
-	d. Date format is wrong
-	PASS
-	e. Date is Invalid
-	PASS
-	f. All Cash book account details veiwed in correct format
-	PASS
-	Test cases passed : 7/7
-	
--------------------------------Not checked
 
 Testing the DepartmentCourses Page
 
