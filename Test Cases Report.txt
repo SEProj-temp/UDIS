@@ -173,7 +173,7 @@ e. Course added successfully and is visible for searching
 
 Test cases passed : 16/16
 
---------------------------------Searching not checked, otherwise passed
+--------------------------------Passed checks
 
 
 
