@@ -1,0 +1,10 @@
+{% extends 'regComplete_base.html' %}
+
+{% block body %}
+<h1>Congratulations {{student.user.first_name}} {{ student.user.last_name }} has been Successfully Registered!</h1>
+<h2> Roll Number is: {{ student.user.username }} </h2>
+{% endblock %}
+
+{% block hyperlink %}
+<a class="btn" href="{% url 'student_register' %}">Register More Students</a>
+{% endblock %}

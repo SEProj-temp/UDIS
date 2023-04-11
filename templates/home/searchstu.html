@@ -1,0 +1,82 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Student</title>
+
+    {% if not user.is_secretary and not user.is_faculty %} 
+    <meta http-equiv="refresh" content="0; URL={% url 'stuprofile' %}" />
+    {% endif %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/proj-style.css' %}">
+</head>
+
+
+<body class="cont">
+    <div>
+        <a href="{% url 'home' %}" class="button">Home</a>
+        
+        <h1>Results for Search Student</h1>
+        
+    </div>
+    
+    {% if students %}
+
+    <div class="table-container">
+            
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+
+                    {% if user.is_secretary or user.is_faculty %} 
+                        <th>Details</th>
+                    {% endif %}
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for student in students %}
+
+                <tr>
+                    <td>{{ student.first_name }} {{ student.last_name }}</td>
+                    
+                    {% if user.is_secretary or user.is_faculty %} 
+                        <td>
+                            <a href="{% url 'search_stu_result' student.id %}">Details of {{ student.user.first_name }}</a>
+                        </td>
+                    {% endif %}
+                    
+                </tr>
+                {% endfor %}
+
+                
+
+            </tbody>
+        </table>
+        {% else %}
+            
+            <p>Oops! It seems there is no data satisfying all the conditions together!</p>
+
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

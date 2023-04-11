@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIT UDIS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+    <link rel="stylesheet" href="{% static 'styles/profile-style.css'%}">
+</head>
+
+<body>
+    <h1>
+        Student Profile
+    </h1>
+    <div class="student-profile py-4">
+        
+        
+
+        {% if student %}
+
+        <div class="container">
+            <a href="{% url 'home' %}" class="button" style="text-align: center;color: brown;font-size: 25px;">Home</a>
+            {% if user.is_secretary %}<td><a href="{% url 'grade_tally' student.id %}" style="text-align: center;color: brown;font-size: 25px; margin-left: 20px;">Tally Grades</a></td>{% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="text-align: center;color: brown;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent text-center">
+                            <img class="profile_img" src="/static/user.png" alt="">
+                            <h3>{{ student.user.first_name }} {{ student.user.last_name }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-0"><strong class="pr-1">Department:</strong>{{ student.user.dept_name }}</p>
+                            <p class="mb-0"><strong class="pr-1">Course:</strong>{{ student.get_programme_display }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                            <h2 class="mb-0"><i class="uil uil-cloud-info"></i></i>General Information</h2>
+                        </div>
+                        <div class="card-body pt-0">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th width="30%">Roll number</th>
+                                    <td width="2%">:</td>
+                                    <td>{{ student.user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Address</th>
+                                    <td width="2%">:</td>
+                                    <td>{{ student.user.address }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Gender</th>
+                                    <td width="2%">:</td>
+                                    <td>{{ student.user.get_gender_display }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Year of Joining</th>
+                                    <td width="2%">:</td>
+                                    <td>{{ student.user.year_of_admission }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">CGPA</th>
+                                    <td width="2%">:</td>
+                                    <td>{{ student.stu_tally.last.cgpa }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="performance">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                            <h2 class="mb-0"><i class="uil uil-graduation-cap"></i>Performance</h2>
+                        </div>
+                        <br>
+                        <div class="container">
+                            <!-- Add all the database tables here -->
+                            <div class="backlog">
+                                <h3>
+                                    Backlogged Courses
+                                </h3>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Course code</th>
+                                            <th>Course Name</th>
+                                            <th>Department</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for grade in distinct %}
+                                        {% if grade.is_backlog %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ grade.subject.course_code }}</td>
+                                            <td>{{ grade.subject.course_name }}</td>
+                                            <td>{{ grade.subject.course_dept }}</td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br><br><br>
+                            {% regroup student.stu_grades.all|dictsort:"semester_number" by semester_number as grade_list %}
+                            <div class="sgpa">
+                                <h3>
+                                    Semester Wise Performance
+                                </h3>
+                                <br>
+                                {% for grouper, grade in grade_list %}
+                                <h4>Semester-{{ grouper }}</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Course code</th>
+                                            <th>Course Name</th>
+                                            <th>Credits</th>
+                                            <th>Grade</th>
+                                            {% if user.is_secretary %}<th>Update Grade</th>{% endif %}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for g in grade %}
+                                        
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ g.subject.course_code }}</td>
+                                            <td>{% if g.is_backlog and g.is_cleared %}*{% endif %}{{ g.subject.course_name }}</td>
+                                            <td>{{ g.subject.course_credits }}</td>
+                                            <td>{{ g.get_grade_display }}</td>
+                                            {% if user.is_secretary %}<td><a href="{% url 'grade_update' g.id %}">Update Grade</a></td>{% endif %}
+                                        </tr>
+                                        {% endfor%}
+                                    </tbody>
+                                </table>
+                                <br>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Total Credits</th>
+                                            <th>SGPA</th>
+                                            <th>CGPA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for tal in student.stu_tally.all %}
+                    
+                                        {% if tal.semester_number == grouper %}
+                                        <tr>
+                                            <td>{{ tal.total_creds }}</td>
+                                            <td>{{ tal.sgpa }}</td>
+                                            <td>{{ tal.cgpa }}</td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                                <br><br>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>Oops! It seems there is no data satisfying all the conditions together!</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

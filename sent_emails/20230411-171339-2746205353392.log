@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@my-host.com
+To: rst@uvw.xyz
+Date: Tue, 11 Apr 2023 11:43:39 -0000
+Message-ID: 
+ <168121341987.25720.14017585478761558230@LAPTOP-MFKA5DO7.iitkgp.ac.in>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/Mg/bmi56r-7a47979ca8dd242c04fa90f5db833b94/
+
+Your username, in case you’ve forgotten: 1234
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

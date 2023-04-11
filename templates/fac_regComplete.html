@@ -1,0 +1,10 @@
+{% extends 'regComplete_base.html' %}
+
+{% block body %}
+<h1>Congratulations {{faculty.first_name}} {{ faculty.last_name }} has been Successfully Registered!</h1>
+<h2> Faculty ID is: {{ faculty.username }} </h2>
+{% endblock %}
+
+{% block hyperlink %}
+<a class="btn" href="{% url 'faculty_register' %}">Register More Faculties</a>
+{% endblock %}

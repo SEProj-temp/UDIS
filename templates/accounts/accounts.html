@@ -1,0 +1,79 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/proj-style.css' %}">
+</head>
+
+
+<body class="cont">
+
+    <div>
+        <a href="{% url 'home' %}" class="button">Home</a>
+        {% if user.is_secretary %} <a href="{% url 'addacc' %}" class="button">Add Transaction</a> {% endif %}
+        {% if user.is_authenticated %}
+        <h1>Accounts of the department {{ user.dept_name }}</h1>
+        {% else %}
+        <h1>Accounts of the University</h1>
+        {% endif %}
+
+        <div class="table-container">
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <table>
+                <thead>
+                    <tr>
+                        {% if not user.is_authenticated %} <th>Department</th>{% endif %}
+                        <th>Transaction Amount</th>
+                        <th>Transaction Type</th>
+                        <th>Transactee</th>
+                        <th>Date of Transaction</th>
+                        <th>Purpose</th>
+                        <th>Balance</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for transaction in accounts %}
+
+                        <tr>
+                            {% if not user.is_authenticated %} <td>{{ transaction.dept_name }}</td>{% endif %}
+                            <td>{{ transaction.amount }}</td>
+
+                            <td>{{ transaction.transaction_type }}</td>
+
+                            <td>{{ transaction.transactee }}</td>
+
+                            <td>{{ transaction.date_of_transaction }}</td>
+ 
+                            <td>{{ transaction.purpose }}</td>
+
+                            <td>{{ transaction.current_balance }}</td>
+                        </tr>
+
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+
+</body>
+
+</html>

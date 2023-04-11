@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Registration Complete</title>
+        <link rel="stylesheet" href="{% static 'styles/stupidstyle.css' %}">
+    </head>
+
+    <body>
+        {% block body %}
+        {% endblock %}
+
+        <div class="btndiv">
+
+            {% block hyperlink %}
+            {% endblock %}
+            <a class="btn" href="{% url 'secretary_home' %}">Home</a>
+        </div>
+    </body>
+</html>

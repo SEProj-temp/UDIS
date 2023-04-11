@@ -1,0 +1,58 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Student</title>
+
+    {% if not user.is_authenticated %} 
+    <meta http-equiv="refresh" content="0; URL={% url 'home' %}" />
+
+    {% elif user.is_student %}
+    <meta http-equiv="refresh" content="0; URL={% url 'search_stu_result' user.stu.id %}" />
+    {% endif %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/proj-style.css' %}">
+</head>
+
+
+<body class="cont">
+    <div>
+        <a href="{% url 'home' %}" class="button">Home</a>
+        
+        <h1>Search Student</h1>
+        <h4>Enter required search data in the fields. If blank, the specific field queries all the students in the database.</h4>
+
+    </div>
+    <div class="container">
+           
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+               
+        <form action="{% url 'search_stu' %}" method="GET" class="project">
+
+            <label for="id_roll_no">Enter the Roll number of the student:</label>
+            <input name="r_no" type="text" placeholder="Enter the roll number (optional)"/>
+
+            <label for="id_furniture_type">Enter the first name of the student:</label>
+            <input name="stu_name" type="text" placeholder="Enter the first name here (optional)"/>
+
+            <button type="submit" class="submit">Submit</button>
+        </form>
+        
+    </div>
+
+</body>
+
+</html>

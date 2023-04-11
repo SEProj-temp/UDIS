@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        {% if not user.is_secretary %} 
+        <meta http-equiv="refresh" content="0; URL={% url 'home' %}" />
+        {% endif %}
+
+        <link rel="stylesheet" href="{% static 'styles/register-style.css'%}">
+        <title>Register New Student</title>
+    </head>
+    <body>
+        
+        <div id = "container1">
+            <h1 id = "title"> Student Registration Form</h1>
+        </div>
+        
+        <div id = "container2">
+            <form action="{% url 'student_register' %}" method="POST" novalidate>
+                {% csrf_token %}
+
+                <div class="fieldWrapper">
+                    <label style="color:white">Roll Number:</label>
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+
+                <div class="fieldWrapper">
+                    <label style="color:white">Programme:</label>
+                    {{ form.programme }}
+                    {{ form.programme.errors }}
+                </div>
+                
+                <!--select name="prog" class="lab2" required>
+                    <option value="SelProg">Select Programme</option>
+                    <option value="B.Tech">Bacherlor's Of Technology</option>
+                    <option value="M.Tech">Master's Of Technology</option>
+                    <option value="Phd">Doctor Of Philosophy</option>
+                    <option value="Msc">Master's In Science</option>
+                    <option value="Dual Deg.">Dual Degree</option>
+                </select-->
+
+                <div class="fieldWrapper">
+                    <label style="color:white">Department:</label>
+                    {{ form.dept_name }}
+                    {{ form.dept_name.errors }}
+                </div>
+            
+                <div class="fieldWrapper">
+                    <label style="color:white">First Name:</label>
+                    {{ form.first_name }}
+                    {{ form.first_name.errors }}
+                </div>
+                <!--input style=" position: fixed; left:300px;top:228px;"type="text" id="fname" required name="fname" placeholder="First Name"-->
+                
+                <div class="fieldWrapper">
+                    <label style="color:white">Last Name:</label>
+                    {{ form.last_name }}
+                    {{ form.last_name.errors }}
+                </div>
+                <!--input style=" position: fixed; left:300px;top:328px;"type="text" id="lname" required name="lname" placeholder="Last Name"-->
+                
+                <div class="fieldWrapper">
+                    <label style="color:white">Address:</label>
+                    {{ form.address }}
+                    {{ form.address.errors }}
+                </div>
+                <!--input style=" position: fixed; left:300px;top:428px;"type="text" id="lname" required name="addr" placeholder="Address"-->
+                
+                <div class="fieldWrapper">
+                    <label style="color:white">Gender:</label>
+                    {{ form.gender }}
+                    {{ form.gender.errors }}
+                </div>
+
+                <!--select name="sex" class="lab4" style="position:fixed;left:300px;top:525px;" required>
+                    <option value="Sg">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others" >Other</option>
+                </select-->
+                
+                <div class="fieldWrapper">
+                    <label style="color:white">Guardian Name:</label>
+                    {{ form.guardian_name }}
+                    {{ form.guardian_name.errors }}
+                </div>
+                <!--input required style=" position: fixed; left:300px;top:625px;" type="text" id="lname" name="gname" placeholder="Guardian Name"-->
+                
+                <div class="fieldWrapper">
+                    <label style="color:white">Phone Number:</label>
+                    {{ form.phone_number }}
+                    {{ form.phone_number.errors }}
+                </div>
+                <!--input required style=" position: fixed; right:150px;top:228px;" type="number" id="lname" name="mob" placeholder="Mobile"-->
+                
+                <div class="fieldWrapper">
+                    <label style="color:white">Email ID:</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+                <!--input required style=" position: fixed; right:150px;top:328px;" type="number" id="lname" name="bal" placeholder="Account"-->
+
+                <div class="fieldWrapper">
+                    <label style="color:white">Year Of Admission:</label>
+                    {{ form.year_of_admission }}
+                    {{ form.year_of_admission.errors }}
+                </div>
+
+                <div class="fieldWrapper">
+                    <label style="color:white">Password:</label>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                </div>
+
+                <div class="fieldWrapper">
+                    <label style="color:white">Confirm password:</label>
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                </div>
+
+                <button type="submit" id = "submit" name = "submit">Register Student</button>
+            </form>
+        </div>
+    </body>
+</html>

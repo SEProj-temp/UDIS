@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@my-host.com
+To: rst@uvw.xyz
+Date: Tue, 11 Apr 2023 03:30:02 -0000
+Message-ID: <168118380262.26500.12237668541474091695@LAPTOP-MFKA5DO7>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/Mg/bmhic2-1381ff4e481d3654291cea7ff9c2765d/
+
+Your username, in case you’ve forgotten: 1234
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

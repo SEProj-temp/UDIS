@@ -1,0 +1,360 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    {% block redirect %}
+
+        {% if user.is_secretary %} 
+        <meta http-equiv="refresh" content="0; URL={% url 'secretary_home' %}" />
+
+        {% elif user.is_faculty %}
+        <meta http-equiv="refresh" content="0; URL={% url 'faculty_home' %}" />
+
+        {% elif user.is_student %} 
+        <meta http-equiv="refresh" content="0; URL={% url 'student_home' %}" />
+
+        {% endif %}
+
+    {% endblock %}
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIT UDIS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico'%}">
+    <link rel="stylesheet" href="{% static 'styles/home-style.css' %}">
+</head>
+<body>
+    <!--nav>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="{% static 'logo.png'%}" alt=""></a>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#Alumni">Alumni</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="https://www.google.com/search?q=massachusetts+institute+of+technology+gallery&tbm=isch&ved=2ahUKEwie9P3fhIf-AhVvELcAHUQDAyEQ2-cCegQIABAA&oq=massachusetts+institute+of+technology+gallery&gs_lcp=CgNpbWcQA1AAWABgUGgAcAB4AIABAIgBAJIBAJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=iEYnZJ6QG--g3LUPxIaMiAI&bih=714&biw=1536">Gallery</a></li>
+                <li><a href="#footer">Contact us</a></li>
+                <li><a href="./login.html" class="login">Login</a></li>
+            </ul>
+        </div>
+    </nav-->
+
+    <nav>
+        <div class="container">
+            <a href="{% url 'home' %}" class="logo"><img src="{% static 'logo.png' %}" alt=""></a>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                
+                <li><a href="#Alumni">Alumni</a></li>
+                
+                <li><a href="#About">About</a></li>
+                
+                <li><a href="https://www.google.com/search?q=massachusetts+institute+of+technology+gallery&tbm=isch&ved=2ahUKEwie9P3fhIf-AhVvELcAHUQDAyEQ2-cCegQIABAA&oq=massachusetts+institute+of+technology+gallery&gs_lcp=CgNpbWcQA1AAWABgUGgAcAB4AIABAIgBAJIBAJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=iEYnZJ6QG--g3LUPxIaMiAI&bih=714&biw=1536">Gallery</a></li>
+                
+                <li><a href="#footer">Contact us</a></li>
+                
+                {% if user.is_secretary %}
+                    {% block register %}
+                    {% endblock %}
+                {% endif %}
+                <li>
+                    {% if user.is_authenticated %}
+
+                    <a href="{% url 'logout_user' %}" class="login">Logout</a> <br>
+
+                    {% else %}
+
+                    <a href="{% url 'login_user' %}" class="login">Login</a>
+
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container">
+            <div class="intro">
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <h1>The Massachusetts Institute of Technology</h1>
+                <p>Cambridge, Massachusetts. </p>
+                <p class="info">Established in 1861. MIT has played a significant role in the development of many areas
+                    of modern technology and science.</p>
+                <div class="rm">
+                    <a href="#About" id="read-more">...read more</a>
+                </div>
+                {% block content %}
+                {% endblock %}
+                
+            </div>
+            <div class="buttons">
+                
+                {% if user.is_student %}
+                
+                <a href="{% url 'active_grades' user.stu.id %}">
+                    <div class="btn">
+                        <span>GRADES</span>
+                    </div>
+                </a>
+
+                {% endif %}
+
+                <a href="{% url 'allinv' %}">
+                    <div class="btn">
+                        <span>INVENTORY</span>
+                    </div>
+                </a>
+                <a href="{% url 'allprojects' %}">
+                    <div class="btn">
+                        <span>PROJECTS</span>
+                    </div>
+                </a>
+                <a href="{% url 'allpubs' %}">
+                    <div class="btn">
+                        <span>PUBLICATIONS</span>
+                    </div>
+                </a>
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'stusearch' %}">
+                    <div class="btn">
+                        <span>STUDENT QUERY</span>
+                    </div>
+                </a>
+                {% endif %}
+                
+                <a href="{% url 'allaccounts' %}">
+                    <div class="btn">
+                        <span>ACCOUNTS</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'allcourses' %}">
+                    <div class="btn">
+                        <span>COURSES</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <section id="Alumni">
+        <div class="swiper">
+            <h1>
+                Alumni
+            </h1>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div>
+                        <img src="{% static 'alm1.png' %}" alt="" class="image">
+                    </div>
+                    <div class="details">
+                        <h2>
+                            Buzz Aldrin
+                        </h2>
+                        <p>
+                            The second person to walk on the Moon, Edwin "Buzz" Aldrin gained a doctorate in
+                            astronautics at
+                            MIT in 1963. His dissertation was titled, "Line-of-sight Guidance Techniques for Manned
+                            Orbital
+                            Rendezvous." His first impression of the Moon was that it was “magnificent desolation”,
+                            which
+                            became the title of one of his autobiographies. Also a former US Air Force officer and
+                            command
+                            pilot, Buzz has recently expressed his support for a manned mission to Mars and colonization
+                            of
+                            the planet by 2040.
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="{% static 'alm2.png' %}" alt="" class="image">
+                    </div>
+                    <div class="details">
+                        <h2>
+                            Richard Feynman
+                        </h2>
+                        <p>
+                            Richard Feynman studied ‘Introduction to Theoretical Physics’ in his second year at MIT, an
+                            advanced class intended for postgraduate students, and graduated in 1939. He then studied a
+                            PhD
+                            at Princeton University before working on the Manhattan Project, having been persuaded to
+                            help
+                            build the first atomic bomb before Nazi Germany could. He went on to lecture at both Cornell
+                            University and Caltech whilst developing significant research in quantum electrodynamics,
+                            leading to his Nobel Prize in Physics in 1965.
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div>
+                        <img src="{% static 'alm3.png' %}" alt="" class="image">
+                    </div>
+                    <div class="details">
+                        <h2>
+                            Kofi Annan
+                        </h2>
+                        <p>
+                            Kofi Annan was the seventh Secretary-General of the United Nations from 1997 to 2006, and
+                            was
+                            awarded a Nobel Peace Prize in 2001 along with the UN for “their work for a better organized
+                            and
+                            more peaceful world”. He also established the Kofi Annan Foundation, an independent, not-for
+                            profit organization which works to promote better international governance and support the
+                            abilities of people and countries to achieve a fairer, more peaceful world. Following his
+                            death
+                            on August 18 2018, current UN Secretary-General António Guterres called Kofi Annan "A
+                            champion
+                            for peace and a guiding force for good.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </section>
+
+    <section id="About">
+        <h1>
+            About
+        </h1>
+        <p>
+            The Massachusetts Institute of Technology (MIT) is a private research university located in Cambridge,
+            Massachusetts, United States. It was founded in 1861 as a response to the increasing industrialization of
+            the United States and the need for scientific and technical education.
+        </p>
+        <p>
+            MIT has a reputation as one of the world's leading universities, particularly in the fields of science,
+            technology, engineering, and mathematics (STEM). It is widely regarded as one of the most prestigious
+            universities in the world, consistently ranking at or near the top in various global rankings.
+        </p>
+        <p>
+            MIT has five schools: the School of Architecture and Planning; the School of Engineering; the School of
+            Humanities, Arts, and Social Sciences; the Sloan School of Management; and the School of Science. Each
+            school offers a range of undergraduate and graduate programs.
+        </p>
+        <p>
+            The School of Engineering is the largest school at MIT, offering undergraduate and graduate programs in
+            disciplines such as aerospace, chemical, civil, electrical, materials, mechanical, and nuclear engineering.
+            The Sloan School of Management is one of the world's leading business schools, offering undergraduate and
+            graduate programs in management, finance, entrepreneurship, and other business-related fields.
+        </p>
+        <p>
+            MIT is home to many research centers and laboratories, including the MIT Computer Science and Artificial
+            Intelligence Laboratory (CSAIL), the MIT Media Lab, and the Broad Institute of MIT and Harvard. These
+            centers and labs are at the forefront of research in areas such as robotics, artificial intelligence,
+            biotechnology, and nanotechnology
+        </p>
+        <p>
+            MIT has a diverse student body, with students from all over the world. It is also known for its rigorous
+            academic standards, with a highly competitive admissions process and a challenging curriculum. Students are
+            encouraged to take an interdisciplinary approach to their education, with many opportunities for research
+            and collaboration across different fields.
+        </p>
+        <p>
+            MIT has a strong tradition of entrepreneurship and innovation, with many successful startups and spinoffs
+            originating from the university. It also has a strong commitment to public service, with many students and
+            alumni working in fields such as education, healthcare, and environmental sustainability.
+        </p>
+        <p>
+            The campus of MIT is located on the north bank of the Charles River, directly across from Boston. It covers
+            over 160 acres and includes more than 150 buildings, many of which are iconic examples of modern
+            architecture. The campus is also home to a number of museums, including the MIT Museum, which features
+            exhibits on the history and culture of MIT.
+        </p>
+        <p>
+            Overall, MIT is a world-class institution with a rich history and a commitment to innovation, excellence,
+            and public service. Its reputation as a leader in STEM education and research is well-deserved, and it
+            continues to attract some of the brightest minds from around the world.
+        </p>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="f1">
+                <div class="logo">
+                    <img src="{% static 'foot_logo.png' %}" alt="" class="image">
+                </div>
+            </div>
+            <div class="f2">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="https://www.google.com/search?q=massachusetts+institute+of+technology+gallery&tbm=isch&ved=2ahUKEwie9P3fhIf-AhVvELcAHUQDAyEQ2-cCegQIABAA&oq=massachusetts+institute+of+technology+gallery&gs_lcp=CgNpbWcQA1AAWABgUGgAcAB4AIABAIgBAJIBAJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=iEYnZJ6QG--g3LUPxIaMiAI&bih=714&biw=1536">Gallery</a></li>
+                    <li><a href="#Alumni">Alumni</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw">OpenCourseWare</a></li>
+                    <li><a href="https://whereis.mit.edu/">Campus Map</a></li>
+                </ul>
+            </div>
+            <div class="f3">
+                <h4>Contact us</h4>
+                <ul>
+                    <li>
+                        77 Massachusetts Ave, Cambridge, MA 02139, United States
+                    </li>
+                    <li>
+                        Phone: +1 617-253-1000
+                    </li>
+                    <li>
+                        FAX: +1 617 258-8304
+                    </li>
+                    <li>
+                        Admissions: admissions@mit.edu
+                    </li>
+                    <li>
+                        Alumni Association: aacomments@mit.edu
+                    </li>
+                </ul>
+            </div>
+            <div class="f4">
+                <h4>Social Media Connect</h4>
+                <ul class="socials">
+                    <li><a href="https://www.instagram.com/mitpics/" targets="_blank"><i
+                                class="uil uil-instagram-alt"></i></a></li>
+                    <li><a href="https://www.facebook.com/MITnews/" targets="_blank"><i
+                                class="uil uil-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/MIT?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                            targets="_blank"><i class="uil uil-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/school/mit/" targets="_blank"><i
+                                class="uil uil-linkedin"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCFe-pfe0a9bDvWy74Jd7vFg" targets="_blank"><i
+                                class="uil uil-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>

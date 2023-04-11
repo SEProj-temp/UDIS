@@ -1,0 +1,18 @@
+{% extends 'home/home.html' %}
+
+{% block redirect %}
+
+{% if not user.is_faculty %} 
+<meta http-equiv="refresh" content="0; URL={% url 'home' %}" />
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_faculty %}
+<h2> Faculty View </h2>
+<p> Hello Faculty! </p>
+{% endif %}
+
+{% endblock content %}

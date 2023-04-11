@@ -1,0 +1,10 @@
+{% extends 'regComplete_base.html' %}
+
+{% block body %}
+<h1>Congratulations {{secretary.first_name}} {{ secretary.last_name }} has been Successfully Registered!</h1>
+<h2> Secretary ID is: {{ secretary.username }} </h2>
+{% endblock %}
+
+{% block hyperlink %}
+<a class="btn" href="{% url 'secretary_register' %}">Register More Secretaries</a>
+{% endblock %}

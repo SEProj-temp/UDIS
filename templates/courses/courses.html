@@ -1,0 +1,126 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/proj-style.css' %}">
+</head>
+
+
+<body class="cont">
+    <!-- <div class="cont1">
+            <label><b>Project Name</b></label>
+            <label><b>Faculty</b></label>
+            <label><b>Status</b></label>
+            <label><b>Duration</b></label></li>
+        </div>
+
+        <div class="cont2">
+            <div class="proj">
+                <label class = "pname"><b>P1</b></label>
+                <label class = "fac"><b>F1</b></label>
+                <label class = "stat"><b>Ongoing</b></label>
+                <label class = "dur"><b>2yrs, 0 months</b></label>
+            </div>
+            <div class="proj">
+                <label class = "pname"><b>P2</b></label>
+                <label class = "fac"><b>F2</b></label>
+                <label class = "stat"><b>Ongoing</b></label>
+                <label class = "dur"><b>3yrs, 0 months</b></label>
+            </div>
+        </div> -->
+
+
+    <div>
+        <!-- Add home page link here -->
+        <a href="{% url 'home' %}" class="button">Home</a>
+        {% if user.is_secretary %} <a href="{% url 'addcourse' %}" class="button">Add Course</a> {% endif %}
+        <a href="{% url 'course_search' %}" class="button">Search</a>
+        
+        <h1>Courses</h1>
+        <div class="table-container">
+            
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% if courses %}
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                        <th>Department Name</th>
+                        <th>Course Credits</th>
+
+                        {% if user.is_secretary %} 
+                            <th>Update Courses</th>
+                        
+                        {% elif user.is_student %}
+                            <th>Register Courses</th>
+                        {% endif %}
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for course in courses|dictsort:"course_dept" %}
+                    {% if course not in exclude %}
+
+                    <tr>
+                        <td>{{ course.course_code }}</td>
+
+                        <td>{{ course.course_name }}</td>
+
+                        <td>{{ course.course_dept }}</td>
+
+                        <td>{{ course.course_credits }}</td>
+                        
+                        {% if user.is_secretary %} 
+                            <td>
+                                {% if user.dept_name == course.course_dept %}
+                                <a href="{% url 'course_update' course.id %}">Update {{ course.course_name }}</a>
+                                {% endif %}
+                            </td>
+                        
+                        {% elif user.is_student %}
+                            <td>
+                                <form action="{% url 'course_register' course.id %}" method="GET">
+                                    
+                                    <label for="id_sem_no">Register for semester number:</label>
+                                    <input name="sem_no" type="text" min="{{ tally.semester_number }}" placeholder="Semester number (optional)"/>
+                                
+                                </form>
+                            </td>
+                        {% endif %}
+                        
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            {% else %}
+                
+                <p>Oops! It seems there is no data satisfying all the conditions together!</p>
+
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>

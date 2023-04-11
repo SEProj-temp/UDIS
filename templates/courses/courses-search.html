@@ -1,0 +1,51 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Courses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/proj-style.css' %}">
+</head>
+
+
+<body class="cont">
+    <div>
+        <a href="{% url 'home' %}" class="button">Home</a>
+        
+        <h1>Search Courses</h1>
+        <h4>Enter required search data in the fields. If blank, the specific field queries all the courses.</h4>
+        <h4><strong>Note:</strong> Course name matches substrings, while course code matches exactly</h4>
+
+    </div>
+    <div class="container">
+               
+        <form action="{% url 'search_courses_result' %}" method="GET" class="project">
+
+            <label for="id_course_name">Enter the course name:</label>
+            <input name="course_name" type="text" placeholder="Enter the course name (optional)"/>
+
+            <label for="id_course_code">Enter the course code:</label>
+            <input name="course_code" type="text" placeholder="Enter the course code here (optional)"/>
+
+            <button type="submit" class="submit">Submit</button>
+        </form>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        
+    </div>
+
+</body>
+
+</html>
