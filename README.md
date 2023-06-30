@@ -14,7 +14,7 @@ UDIS is a website designed for use by universities (especially the three major _
 
 ## Dependencies
 
-The UDIS website system needs Python Django, HTML, CSS and PostgreSQL. Hence, to run this project simply install python (version 3.10 is preferable), install django (version 4.1.7), install PostgreSQL (latest version) and clone the repository (Detailed installation instructions in ## Installation)
+The UDIS website system needs Python Django, HTML, CSS and PostgreSQL. Hence, to run this project simply install python (version 3.10 is preferable), install django (version 4.1.7), install PostgreSQL (latest version) and clone the repository (Detailed installation instructions are given below)
 
 ## Installation
 
