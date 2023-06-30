@@ -1,9 +1,9 @@
-from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.views.generic import CreateView, ListView, DetailView
+from django.core.exceptions import PermissionDenied
 
 from .models import User, Student
 from courses.models import Grades
@@ -106,11 +106,23 @@ class StudentSearch(DetailView):
     context_object_name = 'student'
     extra_context = {'distinct': Grades.objects.all().distinct('subject__course_name')}
 
+    def dispatch(self, request, *args, **kwargs):
+        user_obj = request.user
+        if not (user_obj.username == self.get_object().username or user_obj.is_faculty or user_obj.is_secretary):
+            raise PermissionDenied
+        return super().dispatch(request,*args,**kwargs)
+
 class StudentActiveSearch(DetailView):
     model = Student
     template_name = 'grades/grades.html'
     context_object_name = 'student'
     extra_context = {'distinct': Grades.objects.all().distinct('subject__course_name')}
+
+    def dispatch(self, request, *args, **kwargs):
+        user_obj = request.user
+        if not user_obj.username == self.get_object().username:
+            raise PermissionDenied
+        return super().dispatch(request,*args,**kwargs)
     
 class FacultyRegister(CreateView):
 
