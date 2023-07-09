@@ -1,6 +1,6 @@
 # UDIS
 
-UDIS is a website designed for use by universities (especially the three major _classes_ of people found in universities, i.e, **Students**, **Faculty** and **Secretaries**). It tries to simplify and intuitively direct users to specific sub-systems that they seek within the university, along with implementing an authentication and authentication verification system. 
+UDIS is a website designed for use by universities (especially the three major _classes_ of people found in universities, i.e, **Students**, **Faculty** and **Secretaries**). It tries to simplify and intuitively direct users to specific sub-systems that they seek within the university, along with implementing an authentication and verification system. 
 
 ## Features
 
